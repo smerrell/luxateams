@@ -2,13 +2,24 @@
 
 import json
 import sys
+import threading
 from typing import Any
 
 import msal
 import requests
 
 
-def foo(config: Any):
+def get_presence(access_token):
+    # activity properties:
+    # Available, Away, BeRightBack, Busy, DoNotDisturb, InACall,
+    # InAConferenceCall, Inactive,InAMeeting, Offline, OffWork,OutOfOffice,
+    # PresenceUnknown,Presenting, UrgentInterruptionsOnly.
+    graph_data = requests.get('https://graph.microsoft.com/beta/me/presence',
+                              headers={'Authorization': 'Bearer ' + access_token},).json()
+    print(f"activity: {graph_data['activity']}")
+
+
+def authenticate(config: Any):
     app = msal.PublicClientApplication(
         config['application']['id'], None, authority=config['aad']['authority'])
 
@@ -32,13 +43,11 @@ def foo(config: Any):
         print(json.dumps(result, indent=2))
 
     if 'access_token' in result:
-        print("WE HAVE AN ACCESS TOKEN")
-        print(result['access_token'])
-        graph_data = requests.get('https://graph.microsoft.com/beta/me/presence',
-                                  headers={'Authorization': 'Bearer ' + result['access_token']},).json()
-        print(json.dumps(graph_data, indent=2))
+        pass
     else:
         print(json.dumps(result, indent=2))
+
+    return result
 
 
 def main() -> None:
@@ -46,7 +55,13 @@ def main() -> None:
     with open('config.json', 'r') as config_file:
         config = json.load(config_file)
 
-    foo(config)
+    result = authenticate(config)
+
+    ticker = threading.Event()
+    while not ticker.wait(60):
+        if 'access_token' in result:
+            print('getting presence.')
+            get_presence(result['access_token'])
 
 
 if __name__ == '__main__':
