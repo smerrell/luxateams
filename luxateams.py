@@ -4,9 +4,21 @@ import json
 import sys
 import threading
 from typing import Any
+from busylight.lights.usblight import USBLight
 
 import msal
 import requests
+from busylight.lights.luxafor import Flag
+
+
+def set_light(flag: Flag, status):
+    # Available, Away, BeRightBack, Busy, DoNotDisturb, InACall,
+    # InAConferenceCall, Inactive,InAMeeting, Offline, OffWork,OutOfOffice,
+    # PresenceUnknown,Presenting, UrgentInterruptionsOnly.
+    if status == 'Available':
+        flag.on([0, 255, 0])
+    if status == 'Busy':
+        flag.on([255, 0, 0])
 
 
 def get_presence(access_token):
@@ -17,6 +29,7 @@ def get_presence(access_token):
     graph_data = requests.get('https://graph.microsoft.com/beta/me/presence',
                               headers={'Authorization': 'Bearer ' + access_token},).json()
     print(f"activity: {graph_data['activity']}")
+    return graph_data['activity']
 
 
 def authenticate(config: Any):
@@ -55,13 +68,16 @@ def main() -> None:
     with open('config.json', 'r') as config_file:
         config = json.load(config_file)
 
+    flag = Flag.first_light()
+
     result = authenticate(config)
 
     ticker = threading.Event()
-    while not ticker.wait(60):
+    while not ticker.wait(1):
         if 'access_token' in result:
             print('getting presence.')
-            get_presence(result['access_token'])
+            presence = get_presence(result['access_token'])
+            set_light(flag, presence)
 
 
 if __name__ == '__main__':
