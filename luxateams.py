@@ -4,32 +4,32 @@ import json
 import sys
 import threading
 from typing import Any
-from busylight.lights.usblight import USBLight
 
 import msal
 import requests
 from busylight.lights.luxafor import Flag
+from busylight.lights.usblight import USBLight
+from teams.teams import Activity
 
 
 def set_light(flag: Flag, status):
     # Available, Away, BeRightBack, Busy, DoNotDisturb, InACall,
     # InAConferenceCall, Inactive,InAMeeting, Offline, OffWork,OutOfOffice,
     # PresenceUnknown,Presenting, UrgentInterruptionsOnly.
-    if status == 'Available':
+    if status == Activity.Available:
         flag.on([0, 255, 0])
-    if status == 'Busy':
+    if status == Activity.Busy:
         flag.on([255, 0, 0])
+    if status == Activity.Away:
+        flag.on([255, 128, 0])
 
 
-def get_presence(access_token):
-    # activity properties:
-    # Available, Away, BeRightBack, Busy, DoNotDisturb, InACall,
-    # InAConferenceCall, Inactive,InAMeeting, Offline, OffWork,OutOfOffice,
-    # PresenceUnknown,Presenting, UrgentInterruptionsOnly.
+def get_presence(access_token) -> Activity:
     graph_data = requests.get('https://graph.microsoft.com/beta/me/presence',
                               headers={'Authorization': 'Bearer ' + access_token},).json()
     print(f"activity: {graph_data['activity']}")
-    return graph_data['activity']
+
+    return Activity[graph_data['activity']]
 
 
 def authenticate(config: Any):
