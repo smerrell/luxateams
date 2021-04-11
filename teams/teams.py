@@ -2,15 +2,15 @@ from enum import Enum
 
 
 class Availability(Enum):
-    available = 'Available'
-    available_idle = 'AvailableIdle'
-    away = 'Away'
-    be_right_back = 'BeRightBack'
-    busy = 'Busy'
-    busy_idle = 'BusyIdle'
-    do_not_disturb = 'DoNotDisturb'
-    offline = 'Offline'
-    presence_unknown = 'PresenceUnknown'
+    Available = 'Available'
+    AvailableIdle = 'AvailableIdle'
+    Away = 'Away'
+    BeRightBack = 'BeRightBack'
+    Busy = 'Busy'
+    BusyIdle = 'BusyIdle'
+    DoNotDisturb = 'DoNotDisturb'
+    Offline = 'Offline'
+    PresenceUnknown = 'PresenceUnknown'
 
 
 class Activity(Enum):
