@@ -8,6 +8,7 @@ import threading
 from busylight.lights.luxafor import Flag
 
 from aad.authentication import authenticate
+from luxateams import config
 from teams.presence import Activity, get_presence
 
 
@@ -30,16 +31,14 @@ def main() -> None:
     # Handle Ctrl+C
     signal.signal(signal.SIGINT, graceful_exit)
 
-    config = None
-    with open('config.json', 'r') as config_file:
-        config = json.load(config_file)
+    configuration = config.load_config()
 
     flag = Flag.first_light()
 
-    result = authenticate(config)
+    result = authenticate(configuration)
 
     ticker = threading.Event()
-    while not ticker.wait(config['check_interval']):
+    while not ticker.wait(configuration.check_interval):
         if 'access_token' in result:
             print('getting presence.')
             presence = get_presence(result['access_token'])

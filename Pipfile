@@ -7,6 +7,7 @@ name = "pypi"
 busylight-for-humans = "*"
 msal = "*"
 requests = "*"
+jsons = "*"
 
 [dev-packages]
 autopep8 = "*"

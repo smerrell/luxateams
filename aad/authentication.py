@@ -2,12 +2,13 @@
 import atexit
 import json
 import os
-from typing import Any
+import sys
 
 import msal
+from luxateams.config import Config
 
 
-def authenticate(config: Any):
+def authenticate(config: Config):
     cache = msal.SerializableTokenCache()
     if os.path.exists('my_cache.bin'):
         cache.deserialize(open('my_cache.bin', 'r').read())
@@ -15,7 +16,7 @@ def authenticate(config: Any):
                     open('my_cache.bin', 'w').write(cache.serialize())
                     )
     app = msal.PublicClientApplication(
-        config['application']['id'], None, token_cache=cache, authority=config['aad']['authority'])
+        config.application.id, None, token_cache=cache, authority=config.aad.authority)
 
     result = None
     accounts = app.get_accounts()
@@ -25,11 +26,11 @@ def authenticate(config: Any):
         chosen = accounts[0]
         # Now let's try to find a token in cache for this account
         result = app.acquire_token_silent(
-            config['graph']["scopes"], account=chosen)
+            config.graph.scopes, account=chosen)
 
     if not result:
         print('Getting token from AAD')
-        flow = app.initiate_device_flow(scopes=config['graph']['scopes'])
+        flow = app.initiate_device_flow(scopes=config.graph.scopes)
         if 'user_code' not in flow:
             raise ValueError(
                 f"Fail to create device flow. Err; {json.dumps(flow, indent=2)}")
