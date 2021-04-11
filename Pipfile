@@ -11,6 +11,7 @@ jsons = "*"
 
 [dev-packages]
 autopep8 = "*"
+rope = "*"
 
 [requires]
 python_version = "3.9"

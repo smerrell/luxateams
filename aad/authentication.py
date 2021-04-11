@@ -9,12 +9,7 @@ from luxateams.config import Config
 
 
 def authenticate(config: Config):
-    cache = msal.SerializableTokenCache()
-    if os.path.exists('my_cache.bin'):
-        cache.deserialize(open('my_cache.bin', 'r').read())
-    atexit.register(lambda:
-                    open('my_cache.bin', 'w').write(cache.serialize())
-                    )
+    cache = _prime_cache()
     app = msal.PublicClientApplication(
         config.application.id, None, token_cache=cache, authority=config.aad.authority)
 
@@ -48,3 +43,17 @@ def authenticate(config: Config):
         print(json.dumps(result, indent=2))
 
     return result
+
+
+def _prime_cache():
+    cache = msal.SerializableTokenCache()
+
+    # Load the chache if it is available
+    if os.path.exists('my_cache.bin'):
+        cache.deserialize(open('my_cache.bin', 'r').read())
+
+    # Flush cache on app exit
+    atexit.register(lambda:
+                    open('my_cache.bin', 'w').write(cache.serialize())
+                    )
+    return cache
