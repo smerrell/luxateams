@@ -1,5 +1,7 @@
 from enum import Enum
 
+import requests
+
 
 class Availability(Enum):
     Available = 'Available'
@@ -29,3 +31,12 @@ class Activity(Enum):
     PresenceUnknown = 'PresenceUnknown'
     Presenting = 'Presenting'
     UrgentInterruptionsOnly = 'UrgentInterruptionsOnly'
+
+
+def get_presence(access_token) -> Activity:
+    graph_data = requests.get('https://graph.microsoft.com/beta/me/presence',
+                              headers={'Authorization': 'Bearer ' + access_token},).json()
+    print(f"availability: {graph_data['availability']}")
+    print(f"activity: {graph_data['activity']}")
+
+    return Activity[graph_data['activity']]
