@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 
+import atexit
 import json
+import os
 import sys
 import threading
 from typing import Any
+
 
 import msal
 import requests
@@ -33,13 +36,24 @@ def get_presence(access_token) -> Activity:
 
 
 def authenticate(config: Any):
+    cache = msal.SerializableTokenCache()
+    if os.path.exists('my_cache.bin'):
+        cache.deserialize(open('my_cache.bin', 'r').read())
+    atexit.register(lambda:
+                    open('my_cache.bin', 'w').write(cache.serialize())
+                    )
     app = msal.PublicClientApplication(
-        config['application']['id'], None, authority=config['aad']['authority'])
+        config['application']['id'], None, token_cache=cache, authority=config['aad']['authority'])
 
     result = None
     accounts = app.get_accounts()
     if accounts:
-        print('wow, we have an account!')
+        print("Account(s) exists in cache, probably with token too. Let's try.")
+        # Assuming the end user chose this one
+        chosen = accounts[0]
+        # Now let's try to find a token in cache for this account
+        result = app.acquire_token_silent(
+            config['graph']["scopes"], account=chosen)
 
     if not result:
         print('Getting token from AAD')
