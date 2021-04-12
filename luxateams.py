@@ -16,14 +16,6 @@ from teams.presence import Activity, get_presence
 def set_light(flag: Flag, status_map: Dict[str, str], status: Activity):
     status_color = config.to_rgb(status_map[status.value])
     flag.on(status_color)
-    # if status == Activity.Available:
-    #     flag.on([0, 255, 0])
-    # if status == Activity.Busy:
-    #     flag.on([255, 0, 0])
-    # if status == Activity.Away:
-    #     flag.on([255, 255, 0])
-    # if status == Activity.OffWork:
-    #     flag.off()
 
 
 def graceful_exit(signal, frame):
@@ -43,9 +35,12 @@ def main() -> None:
     ticker = threading.Event()
     while not ticker.wait(configuration.check_interval):
         if 'access_token' in result:
-            print('getting presence.')
             presence = get_presence(result['access_token'])
             set_light(flag, configuration.activity_map, presence)
+        else:
+            print('No access token found!')
+            flag.on([255, 128, 0])
+            sys.exit(1)
 
 
 if __name__ == '__main__':
