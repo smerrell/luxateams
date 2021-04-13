@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 
-import json
+import atexit
 import signal
 import sys
 import threading
-from typing import Dict, List
-import atexit
+from typing import Dict
 
 from busylight.lights.luxafor import Flag
 
