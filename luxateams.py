@@ -5,6 +5,7 @@ import signal
 import sys
 import threading
 from typing import Dict, List
+import atexit
 
 from busylight.lights.luxafor import Flag
 
@@ -18,25 +19,37 @@ def set_light(flag: Flag, status_map: Dict[str, str], status: Activity):
     flag.on(status_color)
 
 
-def graceful_exit(signal, frame):
+def graceful_exit(signal, frame) -> None:
     sys.exit(0)
 
 
+def shutdown_light(flag: Flag) -> None:
+    flag.off()
+
+
 def main() -> None:
+    flag = Flag.first_light()
     # Handle Ctrl+C
+    atexit.register(shutdown_light, flag)
     signal.signal(signal.SIGINT, graceful_exit)
 
     configuration = config.load_config()
 
-    flag = Flag.first_light()
-
     result = authenticate(configuration)
 
     ticker = threading.Event()
+    attempts = 0
     while not ticker.wait(configuration.check_interval):
         if 'access_token' in result:
             presence = get_presence(result['access_token'])
-            set_light(flag, configuration.activity_map, presence)
+            if presence is None and attempts < 5:
+                # We had an auth error, try authenticating again
+                flag.on([255, 128, 0])
+                result = authenticate(configuration)
+                attempts += 1
+            else:
+                set_light(flag, configuration.activity_map, presence)
+                attempts = 0
         else:
             print('No access token found!')
             flag.on([255, 128, 0])

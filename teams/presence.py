@@ -1,4 +1,5 @@
 from enum import Enum
+from typing import Optional
 
 import requests
 
@@ -33,10 +34,19 @@ class Activity(Enum):
     UrgentInterruptionsOnly = 'UrgentInterruptionsOnly'
 
 
-def get_presence(access_token) -> Activity:
+def get_presence(access_token) -> Optional[Activity]:
     graph_data = requests.get('https://graph.microsoft.com/beta/me/presence',
                               headers={'Authorization': 'Bearer ' + access_token},).json()
-    print(f"availability: {graph_data['availability']}")
-    print(f"activity: {graph_data['activity']}")
+
+    if 'error' in graph_data and graph_data['error']['code'] == 'InvalidAuthenticationToken':
+        return None
+
+    try:
+        print(f"availability: {graph_data['availability']}")
+        print(f"activity: {graph_data['activity']}")
+    except Exception as e:
+        print("Uh oh")
+        print(e)
+        print(graph_data)
 
     return Activity[graph_data['activity']]
