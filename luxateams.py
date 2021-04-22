@@ -40,7 +40,12 @@ def main() -> None:
     attempts = 0
     while not ticker.wait(configuration.check_interval):
         if 'access_token' in result:
-            presence = get_presence(result['access_token'])
+            presence = None
+            try:
+                presence = get_presence(result['access_token'])
+            except Exception as e:
+                print(f"Error getting presence: {e}")
+
             if presence is None and attempts < 5:
                 # We had an auth error, try authenticating again
                 flag.on([255, 128, 0])

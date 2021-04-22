@@ -1,5 +1,6 @@
 from enum import Enum
 from typing import Optional
+from datetime import datetime
 
 import requests
 
@@ -39,14 +40,13 @@ def get_presence(access_token) -> Optional[Activity]:
                               headers={'Authorization': 'Bearer ' + access_token},).json()
 
     if 'error' in graph_data and graph_data['error']['code'] == 'InvalidAuthenticationToken':
+        print(f"{datetime.now()}: Error: {graph_data}")
         return None
 
-    try:
-        print(f"availability: {graph_data['availability']}")
-        print(f"activity: {graph_data['activity']}")
-    except Exception as e:
-        print("Uh oh")
-        print(e)
+    if 'activity' in graph_data:
+        print(f"{datetime.now()}: activity: {graph_data['activity']}")
+    else:
+        print("Unable to find 'activity' in graph data")
         print(graph_data)
 
     return Activity[graph_data['activity']]
