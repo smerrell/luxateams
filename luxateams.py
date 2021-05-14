@@ -7,6 +7,7 @@ import threading
 from typing import Dict
 
 from busylight.lights.luxafor import Flag
+from notifypy.notify import Notify
 
 from aad.authentication import authenticate
 from luxateams import config
@@ -23,6 +24,10 @@ def graceful_exit(signal, frame) -> None:
 
 
 def shutdown_light(flag: Flag) -> None:
+    notification = Notify()
+    notification.title = "Luxateams exited"
+
+    notification.send(block=True)
     flag.off()
 
 

@@ -8,6 +8,7 @@ busylight-for-humans = "*"
 msal = "*"
 requests = "*"
 jsons = "*"
+notify-py = "*"
 
 [dev-packages]
 autopep8 = "*"
