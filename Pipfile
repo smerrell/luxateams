@@ -13,6 +13,7 @@ notify-py = "*"
 [dev-packages]
 autopep8 = "*"
 rope = "*"
+flake8 = "*"
 
 [requires]
 python_version = "3.9"
