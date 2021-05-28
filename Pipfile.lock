@@ -25,11 +25,11 @@
         },
         "busylight-for-humans": {
             "hashes": [
-                "sha256:3fe11a4acfe4d08281c8d27e0f158afd150ca9740a60dfdc588e6f0bbe34e1e9",
-                "sha256:936ac76b608f520b7613945d8e1b325c0ac4763eebe20c08125ecd802d2d9b3c"
+                "sha256:0800617a64f935baf692ffa6f259cb6a1f1394d64364edb4d42e79ea8d37c1b8",
+                "sha256:87a83571b669911daf947d53cce14800ae4d6cdc1f4709143d87107fa9e2950c"
             ],
             "index": "pypi",
-            "version": "==0.9.0"
+            "version": "==0.12.5"
         },
         "certifi": {
             "hashes": [
