@@ -4,10 +4,15 @@ import json
 import os
 import sys
 
+import backoff
 import msal
+import requests
 from luxateams.config import Config
 
 
+@backoff.on_exception(backoff.expo,
+                      requests.exceptions.RequestException,
+                      max_time=300)
 def authenticate(config: Config):
     cache = _prime_cache()
     app = msal.PublicClientApplication(
