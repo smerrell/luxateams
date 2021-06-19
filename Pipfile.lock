@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "85e70503281b98505f680305bfb065a207499ebb219d00dff56104cbd1ad84d0"
+            "sha256": "e4142576eb3be5f3ae718a245933e3cd808f70ce6dcf552fac2c064a9919aae4"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -16,21 +16,29 @@
         ]
     },
     "default": {
+        "backoff": {
+            "hashes": [
+                "sha256:5e73e2cbe780e1915a204799dba0a01896f45f4385e636bcca7a0614d879d0cd",
+                "sha256:b8fba021fac74055ac05eb7c7bfce4723aedde6cd0a504e5326bcb0bdd6d19a4"
+            ],
+            "index": "pypi",
+            "version": "==1.10.0"
+        },
         "bitvector-for-humans": {
             "hashes": [
                 "sha256:41bd430cc698f3712e36b32c1ac0d4420ceb230d8fdbf6c3489243f470457305",
                 "sha256:7e9fe5e3d82f3c12c9da7271870564c721be18949bc42113ba46e16811da40c7"
             ],
-            "markers": "python_version >= '3.7' and python_version < '4.0'",
+            "markers": "python_version >= '3.7' and python_version < '4'",
             "version": "==0.14.1"
         },
         "busylight-for-humans": {
             "hashes": [
-                "sha256:8229e994e531acf3fef897ff4a61eae115925c912f381270fd9224cd3b825dd5",
-                "sha256:a0af072ee3c2ae6b55de98ad4e99709d52288e8534a25fb63d845b3c6b21599d"
+                "sha256:424770d69b754efb0d85dc84c4db25f52c6ec3519c24f6454c0b659a050fdc61",
+                "sha256:6157757173925d813411ba165badb6b740d4571405240bb6b0999f5b503665c0"
             ],
             "index": "pypi",
-            "version": "==0.12.9"
+            "version": "==0.12.6"
         },
         "certifi": {
             "hashes": [
@@ -245,7 +253,7 @@
                 "sha256:753a0374df26658f99d826cfe40394a686d05985786d946fbe4165b5148f5a7c",
                 "sha256:a7acd0977125325f516bda9735fa7142b909a8d01e8b2e4c8108d0984e6e0098"
             ],
-            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4' and python_version < '4.0'",
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4' and python_version < '4'",
             "version": "==1.26.5"
         },
         "webcolors": {

@@ -1,7 +1,8 @@
+from datetime import datetime
 from enum import Enum
 from typing import Optional
-from datetime import datetime
 
+import backoff
 import requests
 
 
@@ -35,6 +36,9 @@ class Activity(Enum):
     UrgentInterruptionsOnly = 'UrgentInterruptionsOnly'
 
 
+@backoff.on_exception(backoff.expo,
+                      requests.exceptions.RequestException,
+                      max_time=300)
 def get_presence(access_token) -> Optional[Activity]:
     graph_data = requests.get('https://graph.microsoft.com/beta/me/presence',
                               headers={'Authorization': 'Bearer ' + access_token},).json()

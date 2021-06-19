@@ -9,6 +9,7 @@ msal = "*"
 requests = "*"
 jsons = "*"
 notify-py = "*"
+backoff = "*"
 
 [dev-packages]
 autopep8 = "*"
