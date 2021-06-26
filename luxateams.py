@@ -7,7 +7,10 @@ import threading
 from typing import Dict
 
 from busylight.lights.luxafor import Flag
-from notifypy.notify import Notify
+
+# We only want this if we're on macOS
+if sys.platform == "darwin":
+    from notifypy.notify import Notify
 
 from aad.authentication import authenticate
 from luxateams import config
@@ -24,10 +27,12 @@ def graceful_exit(signal, frame) -> None:
 
 
 def shutdown_light(flag: Flag) -> None:
-    notification = Notify()
-    notification.title = "Luxateams exited"
+    if sys.platform == "darwin":
+        notification = Notify()
+        notification.title = "Luxateams exited"
 
-    notification.send(block=True)
+        notification.send(block=True)
+
     flag.off()
 
 
