@@ -1,0 +1,30 @@
+{
+    "check_interval": 10,
+    "aad": {
+        "authority": "https://login.microsoftonline.com/<some guid>"
+    },
+    "application": {
+        "id": "<some guid>",
+        "tenant": "<some guid>"
+    },
+    "graph": {
+        "scopes": ["Presence.Read"]
+    },
+    "activity_map": {
+        "Available": "#00FF00",
+        "Away": "#FFFF00",
+        "BeRightBack": "#FFFF00",
+        "Busy": "#FF0000",
+        "DoNotDisturb": "#FF0000",
+        "InACall": "#FF0000",
+        "InAConferenceCall": "#FF0000",
+        "Inactive": "#FFFF00",
+        "InAMeeting": "#FF0000",
+        "Offline": "#000000",
+        "OffWork": "#000000",
+        "OutOfOffice": "#000000",
+        "PresenceUnknown": "#0000FF",
+        "Presenting": "#FF0000",
+        "UrgentInterruptionsOnly": "#FF0000"
+    }
+}
