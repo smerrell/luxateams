@@ -187,10 +187,10 @@
         },
         "jsons": {
             "hashes": [
-                "sha256:456b3129fdaaebb19ea0e574686b716d280ebb1632fac92f06c041c666f634b6"
+                "sha256:493643e28dcb3432aac72b79b1962eb955dfc7807bb7ea76e435efc99e9c4beb"
             ],
             "index": "pypi",
-            "version": "==1.5.1"
+            "version": "==1.6.0"
         },
         "loguru": {
             "hashes": [
