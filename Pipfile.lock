@@ -204,10 +204,10 @@
         },
         "jsons": {
             "hashes": [
-                "sha256:51e7485703aa98f0b35bae3c34bd73b8a60526b5d19cd81ec68e47eee42e03ed"
+                "sha256:f5cc49d39b163ff8ba95ed848fcb84a8ec662f99efe09adf9450de4f41aa68fd"
             ],
             "index": "pypi",
-            "version": "==1.6.1"
+            "version": "==1.6.2"
         },
         "loguru": {
             "hashes": [
@@ -243,13 +243,13 @@
         },
         "pyjwt": {
             "extras": [
-
+                "crypto"
             ],
             "hashes": [
                 "sha256:72d1d253f32dbd4f5c88eaf1fdc62f3a19f676ccbadb9dbc5d07e951b2b26daf",
                 "sha256:d42908208c699b3b973cbeb01a969ba6a96c821eefb1c5bfe4c390c01d67abba"
             ],
-            "index": "pypi",
+            "markers": "python_version >= '3.6'",
             "version": "==2.4.0"
         },
         "requests": {
@@ -292,11 +292,11 @@
         },
         "webcolors": {
             "hashes": [
-                "sha256:76f360636957d1c976db7466bc71dcb713bb95ac8911944dffc55c01cb516de6",
-                "sha256:b8cd5d865a25c51ff1218f0c90d0c0781fc64312a49b746b320cf50de1648f6e"
+                "sha256:16d043d3a08fd6a1b1b7e3e9e62640d09790dce80d2bdd4792a175b35fe794a9",
+                "sha256:d98743d81d498a2d3eaf165196e65481f0d2ea85281463d856b1e51b09f62dce"
             ],
-            "markers": "python_version >= '3.5'",
-            "version": "==1.11.1"
+            "markers": "python_version >= '3.7'",
+            "version": "==1.12"
         }
     },
     "develop": {
