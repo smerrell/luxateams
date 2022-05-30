@@ -204,10 +204,10 @@
         },
         "jsons": {
             "hashes": [
-                "sha256:51e7485703aa98f0b35bae3c34bd73b8a60526b5d19cd81ec68e47eee42e03ed"
+                "sha256:f5cc49d39b163ff8ba95ed848fcb84a8ec662f99efe09adf9450de4f41aa68fd"
             ],
             "index": "pypi",
-            "version": "==1.6.1"
+            "version": "==1.6.2"
         },
         "loguru": {
             "hashes": [
