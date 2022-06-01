@@ -29,7 +29,7 @@
                 "sha256:41bd430cc698f3712e36b32c1ac0d4420ceb230d8fdbf6c3489243f470457305",
                 "sha256:7e9fe5e3d82f3c12c9da7271870564c721be18949bc42113ba46e16811da40c7"
             ],
-            "markers": "python_version >= '3.7' and python_version < '4'",
+            "markers": "python_version >= '3.7' and python_version < '4.0'",
             "version": "==0.14.1"
         },
         "busylight-for-humans": {
@@ -219,11 +219,11 @@
         },
         "msal": {
             "hashes": [
-                "sha256:04e3cb7bb75c51f56d290381f23056207df1f3eb594ed03d38551f3b16d2a36e",
-                "sha256:5a52d78e70d2c451e267c1e8c2342e4c06f495c75c859aeafd9260d3974f09fe"
+                "sha256:576af55866038b60edbcb31d831325a1bd8241ed272186e2832968fd4717d202",
+                "sha256:9c10e6cb32e0b6b8eaafc1c9a68bc3b2ff71505e0c5b8200799582d8b9f22947"
             ],
             "index": "pypi",
-            "version": "==1.17.0"
+            "version": "==1.18.0"
         },
         "notify-py": {
             "hashes": [
@@ -287,7 +287,7 @@
                 "sha256:44ece4d53fb1706f667c9bd1c648f5469a2ec925fcf3a776667042d645472c14",
                 "sha256:aabaf16477806a5e1dd19aa41f8c2b7950dd3c746362d7e3223dbe6de6ac448e"
             ],
-            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4' and python_version < '4'",
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4' and python_version < '4.0'",
             "version": "==1.26.9"
         },
         "webcolors": {
