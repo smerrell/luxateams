@@ -18,11 +18,11 @@
     "default": {
         "backoff": {
             "hashes": [
-                "sha256:8700797e5f45e41ee3bf357137f074a174797016dc9ad3c2b974a955bab92b50",
-                "sha256:bd6f32d4aff2607a578e847bf5bdb978a0eb1911fe5c0b0a73325328881bb31c"
+                "sha256:03f829f5bb1923180821643f8753b0502c3b682293992485b0eef2807afa5cba",
+                "sha256:63579f9a0628e06278f7e47b7d7d5b6ce20dc65c5e96a6f3ca99a6adca0396e8"
             ],
             "index": "pypi",
-            "version": "==2.0.1"
+            "version": "==2.2.1"
         },
         "bitvector-for-humans": {
             "hashes": [
