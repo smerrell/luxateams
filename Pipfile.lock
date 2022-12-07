@@ -244,11 +244,11 @@
         },
         "msal": {
             "hashes": [
-                "sha256:04e3cb7bb75c51f56d290381f23056207df1f3eb594ed03d38551f3b16d2a36e",
-                "sha256:5a52d78e70d2c451e267c1e8c2342e4c06f495c75c859aeafd9260d3974f09fe"
+                "sha256:78344cd4c91d6134a593b5e3e45541e666e37b747ff8a6316c3668dd1e6ab6b2",
+                "sha256:d2f1c26368ecdc28c8657d457352faa0b81b1845a7b889d8676787721ba86792"
             ],
             "index": "pypi",
-            "version": "==1.17.0"
+            "version": "==1.20.0"
         },
         "notify-py": {
             "hashes": [
