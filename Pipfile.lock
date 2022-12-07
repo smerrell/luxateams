@@ -229,10 +229,11 @@
         },
         "jsons": {
             "hashes": [
-                "sha256:f5cc49d39b163ff8ba95ed848fcb84a8ec662f99efe09adf9450de4f41aa68fd"
+                "sha256:cd5815c7c6790ae11c70ad9978e0aa850d0d08a643a5105cc604eac8b29a30d7",
+                "sha256:f07f8919316f72a3843c7ca6cc6c900513089f10092626934d1bfe4b5cf15401"
             ],
             "index": "pypi",
-            "version": "==1.6.2"
+            "version": "==1.6.3"
         },
         "loguru": {
             "hashes": [
