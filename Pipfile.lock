@@ -45,7 +45,7 @@
                 "sha256:35824b4c3a97115964b408844d64aa14db1cc518f6562e8d7261699d1350a9e3",
                 "sha256:4ad3232f5e926d6718ec31cfc1fcadfde020920e278684144551c91769c7bc18"
             ],
-            "index": "pypi",
+            "markers": "python_version >= '3.6'",
             "version": "==2022.12.7"
         },
         "cffi": {
@@ -122,7 +122,7 @@
                 "sha256:5a3d016c7c547f69d6f81fb0db9449ce888b418b5b9952cc5e6e66843e9dd845",
                 "sha256:83e9a75d1911279afd89352c68b45348559d1fc0506b054b346651b5e7fee29f"
             ],
-            "markers": "python_full_version >= '3.6.0'",
+            "markers": "python_version >= '3.6'",
             "version": "==2.1.1"
         },
         "click": {
@@ -162,7 +162,7 @@
                 "sha256:ca57eb3ddaccd1112c18fc80abe41db443cc2e9dcb1917078e02dfa010a4f353",
                 "sha256:ce127dd0a6a0811c251a6cddd014d292728484e530d80e872ad9806cfb1c5b3c"
             ],
-            "markers": "python_full_version >= '3.6.0'",
+            "markers": "python_version >= '3.6'",
             "version": "==38.0.4"
         },
         "hidapi": {
@@ -253,11 +253,11 @@
         },
         "notify-py": {
             "hashes": [
-                "sha256:8561c7d363eddad3b07be11405135e168c2f52e42bdbfc7f2e613b07a8e7bae0",
-                "sha256:9b9f689631ddba2ec1313fe4b4d19b8f1f032b38bbdc118b21cdd880c134e8a6"
+                "sha256:65ff7b8d50d0a62239a0155e48fee054c25a8fd03960943d0427eece870a5cda",
+                "sha256:7b1527048af9e1e143ccb41a3473afc16886d8d1b0283ea4cf947e23eb4ac7dd"
             ],
             "index": "pypi",
-            "version": "==0.3.3"
+            "version": "==0.3.38"
         },
         "pycparser": {
             "hashes": [
@@ -306,7 +306,7 @@
                 "sha256:2d5720a5e63f73eaf31edaa15f6ab87f35f0690f8ca233017d7d23d743a91d73",
                 "sha256:54b19e5df18654070a82f8c2aa1da456a4ac16a2a83e6dcd9f170e291c56338e"
             ],
-            "markers": "python_full_version >= '3.6.0'",
+            "markers": "python_version >= '3.6'",
             "version": "==0.6.1"
         },
         "typish": {
