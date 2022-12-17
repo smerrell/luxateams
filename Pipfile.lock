@@ -253,11 +253,11 @@
         },
         "notify-py": {
             "hashes": [
-                "sha256:8561c7d363eddad3b07be11405135e168c2f52e42bdbfc7f2e613b07a8e7bae0",
-                "sha256:9b9f689631ddba2ec1313fe4b4d19b8f1f032b38bbdc118b21cdd880c134e8a6"
+                "sha256:65ff7b8d50d0a62239a0155e48fee054c25a8fd03960943d0427eece870a5cda",
+                "sha256:7b1527048af9e1e143ccb41a3473afc16886d8d1b0283ea4cf947e23eb4ac7dd"
             ],
             "index": "pypi",
-            "version": "==0.3.3"
+            "version": "==0.3.38"
         },
         "pycparser": {
             "hashes": [
